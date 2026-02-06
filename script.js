@@ -69,19 +69,33 @@ function closePopup() {
     }
 }
 
-// Bootstrap Navbar collapse on click
-const navLinks = document.querySelectorAll('.nav-link');
-const menuToggle = document.getElementById('navbarNav');
-if (menuToggle) {
-    const bsCollapse = new bootstrap.Collapse(menuToggle, { toggle: false });
-    navLinks.forEach((l) => {
-        l.addEventListener('click', () => {
-            if (window.innerWidth < 992) { // Only collapse on mobile
-                bsCollapse.hide();
-            }
-        });
-    });
+// Custom Mobile Menu Toggle Logic
+const mobileMenu = document.getElementById('mobile-menu');
+const menuToggle = document.getElementById('menu-toggle');
+const menuClose = document.getElementById('menu-close');
+const mobileLinks = document.querySelectorAll('.mobile-link');
+
+function toggleMobileMenu(show) {
+    if (show) {
+        mobileMenu.classList.add('is-active');
+        document.body.style.overflow = 'hidden'; // Lock scroll
+    } else {
+        mobileMenu.classList.remove('is-active');
+        document.body.style.overflow = ''; // Unlock scroll
+    }
 }
+
+if (menuToggle && mobileMenu) {
+    menuToggle.addEventListener('click', () => toggleMobileMenu(true));
+}
+
+if (menuClose) {
+    menuClose.addEventListener('click', () => toggleMobileMenu(false));
+}
+
+mobileLinks.forEach(link => {
+    link.addEventListener('click', () => toggleMobileMenu(false));
+});
 
 // Loader script from components/loader.blade.php
 window.addEventListener('load', function () {

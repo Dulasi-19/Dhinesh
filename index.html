@@ -78,11 +78,11 @@
         class="navbar navbar-expand-lg fixed-top px-4 py-3 border-b border-white/5 backdrop-blur-md bg-black/20 mix-blend-difference">
         <div class="container-fluid max-w-6xl">
             <a class="navbar-brand text-xl font-bold tracking-tighter text-white" href="#">DHINESH.</a>
-            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarNav">
+            <button class="navbar-toggler border-0 shadow-none" type="button" id="menu-toggle">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Desktop Menu (Hidden on mobile) -->
+            <div class="collapse navbar-collapse d-none d-lg-block" id="navbarNav">
                 <ul class="navbar-nav ms-auto gap-4 text-xs uppercase tracking-widest font-light">
                     <li class="nav-item">
                         <a class="nav-link text-white hover:opacity-50 transition" href="#about">About</a>
@@ -100,6 +100,47 @@
             </div>
         </div>
     </nav>
+
+    <!-- Full-Screen Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="mobile-menu-overlay fixed inset-0 z-[100] bg-black translate-x-full transition-transform duration-500 ease-in-out">
+        <div class="absolute inset-0 bg-gradient-to-br from-indigo-900/40 via-black to-black opacity-90"></div>
+        <div class="relative h-full flex flex-col p-8">
+            <div class="flex justify-between items-center mb-16">
+                <span class="text-xl font-bold tracking-tighter text-white">DHINESH.</span>
+                <button id="menu-close" class="text-white hover:opacity-50 transition p-2">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 6L6 18M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <ul class="flex flex-col gap-8 text-4xl font-bold tracking-tighter uppercase mb-auto">
+                <li class="nav-item-animated">
+                    <a class="mobile-link text-white hover:text-indigo-400 transition" href="#about">About</a>
+                </li>
+                <li class="nav-item-animated" style="transition-delay: 0.1s">
+                    <a class="mobile-link text-white hover:text-indigo-400 transition" href="#resume">Resume</a>
+                </li>
+                <li class="nav-item-animated" style="transition-delay: 0.2s">
+                    <a class="mobile-link text-white hover:text-indigo-400 transition" href="#work">Work</a>
+                </li>
+                <li class="nav-item-animated" style="transition-delay: 0.3s">
+                    <a class="mobile-link text-white hover:text-indigo-400 transition" href="#contact">Contact</a>
+                </li>
+            </ul>
+
+            <div class="mt-auto pt-16 border-t border-white/10 nav-item-animated" style="transition-delay: 0.4s">
+                <p class="text-[10px] text-gray-500 uppercase tracking-widest mb-4">Let's Connect</p>
+                <div class="flex gap-6">
+                    <a href="https://www.linkedin.com/in/dulasimanickam"
+                        class="text-white opacity-60 hover:opacity-100 transition">LinkedIn</a>
+                    <a href="https://github.com/Dulasi-19"
+                        class="text-white opacity-60 hover:opacity-100 transition">GitHub</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section id="about" class="min-h-screen flex flex-col items-center justify-center px-6 pt-32 md:pt-48 relative">
