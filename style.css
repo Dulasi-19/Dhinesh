@@ -1,11 +1,160 @@
+:root {
+    --fk-blue: #2874f0;
+    --fk-yellow: #ff9f00;
+    --fk-white: #ffffff;
+    --fk-bg: #f1f2f4;
+    --fk-text: #212121;
+    --fk-light-text: #878787;
+    --fk-border: #e0e0e0;
+}
+
 body {
     font-family: 'Inter', sans-serif;
-    background-color: black;
-    color: white;
+    background-color: var(--fk-bg);
+    color: var(--fk-text);
     overflow-x: hidden;
     scroll-behavior: smooth;
 }
 
+/* Flipkart Header Styles */
+.fk-header {
+    background-color: var(--fk-blue);
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.16);
+}
+
+.fk-search-bar {
+    background: #fff;
+    border-radius: 2px;
+    padding: 0 16px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .23);
+    width: 100%;
+    max-width: 560px;
+}
+
+.fk-search-input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    padding: 8px 0;
+}
+
+.fk-nav-link {
+    color: #fff !important;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+    padding: 0 20px;
+    transition: opacity 0.2s;
+}
+
+.fk-nav-link:hover {
+    opacity: 0.8;
+}
+
+/* Secondary Category Nav */
+.fk-category-nav {
+    background: #fff;
+    border-bottom: 1px solid var(--fk-border);
+    padding: 12px 0;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    overflow-x: auto;
+}
+
+.fk-category-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    color: var(--fk-text);
+    transition: transform 0.2s;
+}
+
+.fk-category-item:hover {
+    color: var(--fk-blue);
+    transform: translateY(-2px);
+}
+
+.fk-category-item img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+.fk-category-label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Card Styles - Portfolio as Products */
+.fk-card {
+    background: #fff;
+    border-radius: 4px;
+    padding: 16px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease;
+    border: 1px solid var(--fk-border);
+}
+
+.fk-card:hover {
+    box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.15);
+}
+
+.fk-card-title {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: var(--fk-text);
+}
+
+.fk-card-subtitle {
+    font-size: 14px;
+    color: var(--fk-light-text);
+    margin-bottom: 12px;
+}
+
+.fk-price-tag {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--fk-text);
+}
+
+.fk-rating {
+    background: #388e3c;
+    color: #fff;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+}
+
+/* Hero Banner Style */
+.fk-hero-banner {
+    background: #fff;
+    padding: 40px;
+    margin: 20px 0;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.16);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Reveal Animations */
 .reveal {
     opacity: 0;
     transform: translateY(30px);
@@ -17,385 +166,90 @@ body {
     transform: translateY(0);
 }
 
-.glass-card,
-.card.glass-card {
-    background: rgba(255, 255, 255, 0.03) !important;
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05) !important;
-    transition: all 0.3s ease;
-}
-
-.glass-card:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba(255, 255, 255, 0.1);
-    transform: translateY(-5px);
-}
-
-.skill-badge {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 4px 12px;
-    border-radius: 99px;
-    font-size: 0.75rem;
-    letter-spacing: 0.05em;
+/* Buttons */
+.btn-flipkart {
+    background-color: var(--fk-yellow);
+    color: #fff;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 2px;
     text-transform: uppercase;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: none;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .2);
+    transition: background-color 0.2s;
 }
 
-::-webkit-scrollbar {
-    width: 6px;
+.btn-flipkart:hover {
+    background-color: #fb641b;
+    /* Flipkart dark orange */
 }
 
-::-webkit-scrollbar-track {
-    background: black;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #333;
-    border-radius: 10px;
-}
-
-/* Social Bubble Hover Effect */
-.social-link {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.05);
-    transition: all 0.3s ease;
-    overflow: hidden;
-    color: #9ca3af;
-}
-
-.social-link:hover {
-    color: white;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-    transform: translateY(-5px);
-}
-
-.social-link::before {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transition: width 0.6s ease, height 0.6s ease;
-    z-index: 0;
-}
-
-.social-link:hover::before {
-    width: 150%;
-    height: 150%;
-}
-
-.social-link svg {
-    position: relative;
-    z-index: 1;
-}
-
-/* Full Page Bubble Background */
-.bubble-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    /* Brought forward for interaction */
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.bubble {
-    position: absolute;
-    bottom: -100px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 50%;
-    animation: floatUp linear infinite;
-    pointer-events: auto;
-    /* Enable hover */
-    transition: all 0.3s ease;
-}
-
-.bubble:hover {
-    background: rgba(56, 189, 248, 0.8);
-    /* Cyan glow */
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
-    transform: scale(1.1);
-    cursor: pointer;
-}
-
-/* Allow clicks to pass through sections to bubbles */
+/* Section Spacing */
 section {
-    pointer-events: none;
+    padding: 60px 0;
 }
 
-section * {
-    pointer-events: auto;
+.container-wide {
+    max-width: 1248px;
+    margin: 0 auto;
+    padding: 0 16px;
 }
 
-@keyframes floatUp {
-    0% {
-        transform: translateY(0);
-        opacity: 0;
-    }
-
-    50% {
-        opacity: 0.5;
-    }
-
-    100% {
-        transform: translateY(-120vh);
-        opacity: 0;
-    }
-}
-
-.bubble:nth-child(1) {
-    width: 80px;
-    height: 80px;
-    left: 10%;
-    animation-duration: 8s;
-    animation-delay: 0s;
-}
-
-.bubble:nth-child(2) {
-    width: 40px;
-    height: 40px;
-    left: 20%;
-    animation-duration: 10s;
-    animation-delay: 2s;
-}
-
-.bubble:nth-child(3) {
-    width: 70px;
-    height: 70px;
-    left: 35%;
-    animation-duration: 7s;
-    animation-delay: 4s;
-}
-
-.bubble:nth-child(4) {
-    width: 50px;
-    height: 50px;
-    left: 50%;
-    animation-duration: 11s;
-    animation-delay: 0s;
-}
-
-.bubble:nth-child(5) {
-    width: 90px;
-    height: 90px;
-    left: 65%;
-    animation-duration: 9s;
-    animation-delay: 1s;
-}
-
-.bubble:nth-child(6) {
-    width: 60px;
-    height: 60px;
-    left: 80%;
-    animation-duration: 12s;
-    animation-delay: 3s;
-}
-
-.bubble:nth-child(7) {
-    width: 30px;
-    height: 30px;
-    left: 90%;
-    animation-duration: 15s;
-    animation-delay: 2s;
-}
-
-/* Skill Card Animation */
-.skill-card {
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-}
-
-.skill-card:hover {
-    transform: translateY(-5px) scale(1.05);
-    border-color: rgba(236, 72, 153, 0.5);
-    box-shadow: 0 10px 30px -10px rgba(236, 72, 153, 0.3);
-}
-
-.skill-card:active {
-    transform: scale(0.95);
-}
-
-/* Change text and icon color on hover */
-.skill-card:hover span {
-    color: #ec4899;
-    text-shadow: 0 0 10px rgba(236, 72, 153, 0.5);
-}
-
-.skill-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg,
-            transparent,
-            rgba(236, 72, 153, 0.2),
-            transparent);
-    transition: 0.5s;
-}
-
-.skill-card:hover::before {
-    left: 100%;
-    transition: 0.7s ease-in-out;
-}
-
-/* Individual Badge Hover */
-.skill-badge {
-    transition: all 0.3s ease;
-}
-
-.skill-card:hover .skill-badge {
-    background: rgba(255, 255, 255, 0.15);
-}
-
-.skill-badge:hover {
-    background: white !important;
-    color: black;
-    transform: scale(1.1);
-}
-
-.navbar-toggler-icon {
-    filter: invert(1);
-}
-
-.nav-link {
-    color: white !important;
-}
-
-.nav-link:hover {
-    opacity: 0.7;
-}
-
-/* Professional Style Refinements & Mobile Responsiveness */
-
+/* Responsive */
 @media (max-width: 768px) {
-    section {
-        padding-top: 4rem !important;
-        padding-bottom: 4rem !important;
+    .fk-category-nav {
+        gap: 20px;
+        justify-content: flex-start;
+        padding: 12px 16px;
     }
 
-    .glass-card {
-        padding: 1.25rem !important;
+    .fk-hero-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px;
     }
 
-    .text-5xl {
-        font-size: 3rem !important;
-    }
-
-    .md\:grid-cols-2,
-    .md\:grid-cols-3 {
-        grid-template-columns: 1fr !important;
-    }
-
-    #about {
-        padding-top: 8rem !important;
-    }
-
-    .navbar-brand {
-        font-size: 1.25rem !important;
+    .fk-search-bar {
+        max-width: 100%;
+        margin-top: 10px;
     }
 }
 
-/* Premium Button Hover Effect */
-.btn-premium {
-    position: relative;
-    overflow: hidden;
-    transition: all 0.5s ease;
+/* Custom Skill Badges - Category-like */
+.skill-badge {
+    color: var(--fk-light-text);
+    font-size: 14px;
+    padding: 8px 16px;
+    background: #fff;
+    border: 1px solid var(--fk-border);
+    border-radius: 4px;
+    margin: 4px;
+    display: inline-block;
 }
 
-.btn-premium::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 300%;
-    height: 300%;
-    background: rgba(255, 255, 255, 0.1);
-    transform: translate(-50%, -50%) rotate(45deg) translateY(100%);
-    transition: transform 0.6s ease;
+/* Footer Style */
+.fk-footer {
+    background-color: #172337;
+    color: #fff;
+    padding: 40px 0;
+    margin-top: 60px;
 }
 
-.btn-premium:hover::after {
-    transform: translate(-50%, -50%) rotate(45deg) translateY(-100%);
+.fk-footer h4 {
+    color: var(--fk-light-text);
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 20px;
 }
 
-/* Accessibility: Ensure focus states are visible */
-a:focus,
-button:focus {
-    outline: 2px solid rgba(255, 255, 255, 0.5);
-    outline-offset: 4px;
-}
-
-/* Responsive Images */
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Full-Screen Mobile Menu Overlay Styling */
-.mobile-menu-overlay {
-    transition: transform 0.6s cubic-bezier(0.85, 0, 0.15, 1);
-    background: rgba(0, 0, 0, 0.95) !important;
-    backdrop-filter: blur(20px);
-}
-
-.mobile-menu-overlay.is-active {
-    transform: translateX(0);
-}
-
-.nav-item-animated {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.is-active .nav-item-animated {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.mobile-link {
-    font-family: 'Abril Fatface', cursive;
-    letter-spacing: -0.02em;
-    font-size: 3.5rem;
-    line-height: 1.1;
+.fk-footer-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 12px;
     display: block;
+    margin-bottom: 10px;
 }
 
-@media (max-width: 480px) {
-    .mobile-link {
-        font-size: 2.5rem;
-    }
-}
-
-/* Trending Glassmorphism for Mobile Nav */
-.mobile-menu-overlay::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle at center, rgba(79, 70, 229, 0.15) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: -1;
+.fk-footer-link:hover {
+    text-decoration: underline;
 }

@@ -10,99 +10,54 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Initial Hero activation after loader
-window.addEventListener('load', function () {
-    setTimeout(() => {
-        const aboutEl = document.getElementById('about');
-        if (aboutEl) {
-            aboutEl.querySelectorAll('.reveal').forEach(el => {
-                el.classList.add('active');
-            });
-        }
-    }, 3500);
-});
+// Flipkart Search Functionality
+const fkSearch = document.getElementById('fkSearch');
+if (fkSearch) {
+    fkSearch.addEventListener('input', function (e) {
+        const query = e.target.value.toLowerCase();
+        const cards = document.querySelectorAll('.fk-card');
 
-// For static version, form submission might just show an alert or mimic success
+        cards.forEach(card => {
+            const text = card.textContent.toLowerCase();
+            if (text.includes(query)) {
+                card.closest('.col').style.display = '';
+            } else {
+                card.closest('.col').style.display = 'none';
+            }
+        });
+    });
+}
+
+// Contact Form Submission (Flipkart Style Support)
 const contactForm = document.getElementById('contactForm');
-const successPopup = document.getElementById('successPopup');
-const popupContent = document.getElementById('popupContent');
-const submitBtn = document.getElementById('submitBtn');
-const btnText = document.getElementById('btnText');
-const btnLoader = document.getElementById('btnLoader');
-
 if (contactForm) {
-    contactForm.addEventListener('submit', async function (e) {
+    contactForm.addEventListener('submit', function (e) {
         e.preventDefault();
+        const submitBtn = contactForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
 
-        // UI State: Loading
         submitBtn.disabled = true;
-        btnText.textContent = 'Sending...';
-        btnLoader.classList.remove('hidden');
+        submitBtn.textContent = 'Submitting Query...';
 
-        // Simulate network delay
         setTimeout(() => {
-            // UI State: Success
-            showPopup();
+            alert('Your query has been submitted successfully! One of our support executives (Dhinesh) will get back to you soon.');
             contactForm.reset();
-
-            // UI State: Reset
             submitBtn.disabled = false;
-            btnText.textContent = 'Send Message';
-            btnLoader.classList.add('hidden');
+            submitBtn.textContent = originalText;
         }, 1500);
     });
 }
 
-function showPopup() {
-    if (successPopup && popupContent) {
-        successPopup.classList.remove('opacity-0', 'pointer-events-none');
-        popupContent.classList.remove('scale-90');
-        popupContent.classList.add('scale-100');
-    }
-}
-
-function closePopup() {
-    if (successPopup && popupContent) {
-        successPopup.classList.add('opacity-0', 'pointer-events-none');
-        popupContent.classList.add('scale-90');
-        popupContent.classList.remove('scale-100');
-    }
-}
-
-// Custom Mobile Menu Toggle Logic
-const mobileMenu = document.getElementById('mobile-menu');
-const menuToggle = document.getElementById('menu-toggle');
-const menuClose = document.getElementById('menu-close');
-const mobileLinks = document.querySelectorAll('.mobile-link');
-
-function toggleMobileMenu(show) {
-    if (show) {
-        mobileMenu.classList.add('is-active');
-        document.body.style.overflow = 'hidden'; // Lock scroll
-    } else {
-        mobileMenu.classList.remove('is-active');
-        document.body.style.overflow = ''; // Unlock scroll
-    }
-}
-
-if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', () => toggleMobileMenu(true));
-}
-
-if (menuClose) {
-    menuClose.addEventListener('click', () => toggleMobileMenu(false));
-}
-
-mobileLinks.forEach(link => {
-    link.addEventListener('click', () => toggleMobileMenu(false));
-});
-
-// Loader script from components/loader.blade.php
-window.addEventListener('load', function () {
-    const loader = document.getElementById('loader-wrapper');
-    if (loader) {
-        setTimeout(() => {
-            loader.classList.add('loader-hidden');
-        }, 3000);
-    }
+// Ensure smooth scroll for all local links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            window.scrollTo({
+                top: target.offsetTop - 80, // Offset for sticky header
+                behavior: 'smooth'
+            });
+        }
+    });
 });
