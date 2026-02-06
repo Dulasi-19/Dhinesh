@@ -17,10 +17,11 @@ body {
     transform: translateY(0);
 }
 
-.glass-card {
-    background: rgba(255, 255, 255, 0.03);
+.glass-card,
+.card.glass-card {
+    background: rgba(255, 255, 255, 0.03) !important;
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
     transition: all 0.3s ease;
 }
 
